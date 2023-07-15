@@ -36,7 +36,7 @@ class VolumeInfo {
     if (json['industryIdentifiers'] != null) {
       industryIdentifiers = [];
       json['industryIdentifiers'].forEach((v) {
-        industryIdentifiers.add(IndustryIdentifiers.fromJson(v));
+        industryIdentifiers?.add(IndustryIdentifiers.fromJson(v));
       });
     }
     readingModes = json['readingModes'] != null ? ReadingModes.fromJson(json['readingModes']) : null;
@@ -55,27 +55,27 @@ class VolumeInfo {
     infoLink = json['infoLink'];
     canonicalVolumeLink = json['canonicalVolumeLink'];
   }
-  String title;
-  List<String> authors;
-  String publisher;
-  String publishedDate;
-  String description;
-  List<IndustryIdentifiers> industryIdentifiers;
-  ReadingModes readingModes;
-  int pageCount;
-  String printType;
-  List<String> categories;
-  int averageRating;
-  int ratingsCount;
-  String maturityRating;
-  bool allowAnonLogging;
-  String contentVersion;
-  PanelizationSummary panelizationSummary;
-  ImageLinks imageLinks;
-  String language;
-  String previewLink;
-  String infoLink;
-  String canonicalVolumeLink;
+  String? title;
+  List<String>? authors;
+  String? publisher;
+  String? publishedDate;
+  String? description;
+  List<IndustryIdentifiers>? industryIdentifiers;
+  ReadingModes? readingModes;
+  int? pageCount;
+  String? printType;
+  List<String>? categories;
+  int? averageRating;
+  int? ratingsCount;
+  String? maturityRating;
+  bool? allowAnonLogging;
+  String? contentVersion;
+  PanelizationSummary? panelizationSummary;
+  ImageLinks? imageLinks;
+  String? language;
+  String? previewLink;
+  String? infoLink;
+  String? canonicalVolumeLink;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -85,10 +85,10 @@ class VolumeInfo {
     map['publishedDate'] = publishedDate;
     map['description'] = description;
     if (industryIdentifiers != null) {
-      map['industryIdentifiers'] = industryIdentifiers.map((v) => v.toJson()).toList();
+      map['industryIdentifiers'] = industryIdentifiers?.map((v) => v.toJson()).toList();
     }
     if (readingModes != null) {
-      map['readingModes'] = readingModes.toJson();
+      map['readingModes'] = readingModes?.toJson();
     }
     map['pageCount'] = pageCount;
     map['printType'] = printType;
@@ -99,10 +99,10 @@ class VolumeInfo {
     map['allowAnonLogging'] = allowAnonLogging;
     map['contentVersion'] = contentVersion;
     if (panelizationSummary != null) {
-      map['panelizationSummary'] = panelizationSummary.toJson();
+      map['panelizationSummary'] = panelizationSummary?.toJson();
     }
     if (imageLinks != null) {
-      map['imageLinks'] = imageLinks.toJson();
+      map['imageLinks'] = imageLinks?.toJson();
     }
     map['language'] = language;
     map['previewLink'] = previewLink;

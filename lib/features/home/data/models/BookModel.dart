@@ -12,20 +12,20 @@ class BookModel {
     if (json['items'] != null) {
       items = [];
       json['items'].forEach((v) {
-        items.add(Items.fromJson(v));
+        items?.add(Items.fromJson(v));
       });
     }
   }
-  String kind;
-  int totalItems;
-  List<Items> items;
+  String? kind;
+  int? totalItems;
+  List<Items>? items;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['kind'] = kind;
     map['totalItems'] = totalItems;
     if (items != null) {
-      map['items'] = items.map((v) => v.toJson()).toList();
+      map['items'] = items?.map((v) => v.toJson()).toList();
     }
     return map;
   }

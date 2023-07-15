@@ -7,8 +7,8 @@ class ReadingModes {
     text = json['text'];
     image = json['image'];
   }
-  bool text;
-  bool image;
+  bool? text;
+  bool? image;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

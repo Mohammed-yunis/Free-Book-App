@@ -7,8 +7,8 @@ class IndustryIdentifiers {
     type = json['type'];
     identifier = json['identifier'];
   }
-  String type;
-  String identifier;
+  String? type;
+  String? identifier;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

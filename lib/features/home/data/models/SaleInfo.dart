@@ -9,9 +9,9 @@ class SaleInfo {
     saleability = json['saleability'];
     isEbook = json['isEbook'];
   }
-  String country;
-  String saleability;
-  bool isEbook;
+  String? country;
+  String? saleability;
+  bool? isEbook;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

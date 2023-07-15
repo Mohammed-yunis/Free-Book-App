@@ -3,16 +3,16 @@ import 'Pdf.dart';
 
 class AccessInfo {
   AccessInfo({
-      this.country, 
-      this.viewability, 
-      this.embeddable, 
-      this.publicDomain, 
-      this.textToSpeechPermission, 
-      this.epub, 
-      this.pdf, 
-      this.webReaderLink, 
-      this.accessViewStatus, 
-      this.quoteSharingAllowed,});
+    this.country,
+    this.viewability,
+    this.embeddable,
+    this.publicDomain,
+    this.textToSpeechPermission,
+    this.epub,
+    this.pdf,
+    this.webReaderLink,
+    this.accessViewStatus,
+    this.quoteSharingAllowed,});
 
   AccessInfo.fromJson(dynamic json) {
     country = json['country'];
@@ -26,16 +26,17 @@ class AccessInfo {
     accessViewStatus = json['accessViewStatus'];
     quoteSharingAllowed = json['quoteSharingAllowed'];
   }
-  String country;
-  String viewability;
-  bool embeddable;
-  bool publicDomain;
-  String textToSpeechPermission;
-  Epub epub;
-  Pdf pdf;
-  String webReaderLink;
-  String accessViewStatus;
-  bool quoteSharingAllowed;
+
+  String? country;
+  String? viewability;
+  bool? embeddable;
+  bool? publicDomain;
+  String? textToSpeechPermission;
+  Epub? epub;
+  Pdf? pdf;
+  String? webReaderLink;
+  String? accessViewStatus;
+  bool? quoteSharingAllowed;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -45,10 +46,10 @@ class AccessInfo {
     map['publicDomain'] = publicDomain;
     map['textToSpeechPermission'] = textToSpeechPermission;
     if (epub != null) {
-      map['epub'] = epub.toJson();
+      map['epub'] = epub?.toJson();
     }
     if (pdf != null) {
-      map['pdf'] = pdf.toJson();
+      map['pdf'] = pdf?.toJson();
     }
     map['webReaderLink'] = webReaderLink;
     map['accessViewStatus'] = accessViewStatus;

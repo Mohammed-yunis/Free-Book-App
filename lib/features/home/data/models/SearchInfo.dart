@@ -5,7 +5,7 @@ class SearchInfo {
   SearchInfo.fromJson(dynamic json) {
     textSnippet = json['textSnippet'];
   }
-  String textSnippet;
+  String? textSnippet;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

@@ -7,8 +7,8 @@ class ImageLinks {
     smallThumbnail = json['smallThumbnail'];
     thumbnail = json['thumbnail'];
   }
-  String smallThumbnail;
-  String thumbnail;
+  String? smallThumbnail;
+  String? thumbnail;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
