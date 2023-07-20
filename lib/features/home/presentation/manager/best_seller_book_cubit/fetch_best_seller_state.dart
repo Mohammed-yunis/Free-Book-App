@@ -1,7 +1,20 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'fetch_best_seller_cubit.dart';
+import 'package:bookly_app/features/home/data/models/Items.dart';
+import 'package:equatable/equatable.dart';
 
-class FetchBestSellerCubit extends Cubit<FetchBestSellerStates>{
-  FetchBestSellerCubit():super(FetchBestSellerInitial());
+abstract class FetchBestSellerStates extends Equatable {
+  const FetchBestSellerStates();
 
+  @override
+  List<Object> get props => [];
+}
+
+class FetchBestSellerInitial extends FetchBestSellerStates {}
+class FetchBestSellerLoading extends FetchBestSellerStates {}
+class FetchBestSellerFailures extends FetchBestSellerStates {
+  final String errorMessage;
+  const FetchBestSellerFailures(this.errorMessage);
+}
+class FetchBestSellerSuccess extends FetchBestSellerStates {
+  final List<Items> items;
+  const FetchBestSellerSuccess(this.items);
 }

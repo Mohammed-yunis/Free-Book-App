@@ -1,7 +1,20 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'fetch_featured_cubit.dart';
+import 'package:bookly_app/features/home/data/models/Items.dart';
+import 'package:equatable/equatable.dart';
 
-class FetchFeaturedCubit extends Cubit<FetchFeaturedStates>{
-  FetchFeaturedCubit():super(FetchFeaturedInitial());
+abstract class FetchFeaturedStates extends Equatable {
+  const FetchFeaturedStates();
 
+  @override
+  List<Object> get props => [];
+}
+
+class FetchFeaturedInitial extends FetchFeaturedStates {}
+class FetchFeaturedLoading extends FetchFeaturedStates {}
+class FetchFeaturedFailures extends FetchFeaturedStates {
+  final String errorMessage;
+  const FetchFeaturedFailures(this.errorMessage);
+}
+class FetchFeaturedSuccess extends FetchFeaturedStates {
+  final List<Items> items;
+  const FetchFeaturedSuccess(this.items);
 }
