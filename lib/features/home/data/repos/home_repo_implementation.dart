@@ -13,9 +13,9 @@ class HomeRepoImplement implements HomeRepo{
   final ApiServices apiServices;
   HomeRepoImplement(this.apiServices);
   @override
-  Future<Either<Failure, List<Items>>> fetchBestSellerBooks() async {
+  Future<Either<Failure, List<Items>>> fetchBestSellerBooks({required String kQuery}) async {
    try {
-     var data =  await apiServices.get(endPoint: 'volumes?Sorting=bestseller&q=computer science');
+     var data =  await apiServices.get(endPoint: 'volumes?Sorting=bestseller&q=$kQuery');
      BookModel bookModel=BookModel.fromJson(data);
      return Right(bookModel.items!);
    } catch (e) {
@@ -29,9 +29,9 @@ class HomeRepoImplement implements HomeRepo{
   }
 
   @override
-  Future<Either<Failure, List<Items>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<Items>>> fetchFeaturedBooks({required String kQuery}) async {
     try {
-      var data =  await apiServices.get(endPoint: 'volumes?q=programming');
+      var data =  await apiServices.get(endPoint: 'volumes?q=$kQuery');
       BookModel bookModel=BookModel.fromJson(data);
       return Right(bookModel.items!);
     } catch (e) {
@@ -46,7 +46,7 @@ class HomeRepoImplement implements HomeRepo{
   @override
   Future<Either<Failure, List<Items>>> fetchSimilarBooks({required String category}) async {
     try {
-      var data =  await apiServices.get(endPoint: 'volumes?Sorting=relevance&q=programming');
+      var data =  await apiServices.get(endPoint: 'volumes?Sorting=relevance&q=$category');
       BookModel bookModel=BookModel.fromJson(data);
       return Right(bookModel.items!);
     } catch (e) {

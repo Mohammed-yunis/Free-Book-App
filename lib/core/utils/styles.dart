@@ -6,8 +6,8 @@ abstract class Style{
     fontSize: 18,
     fontWeight: FontWeight.w600
   );
-  static const textTheme14=TextStyle(
-    fontSize: 14,
+  static const textTheme12=TextStyle(
+    fontSize: 12,
     fontWeight: FontWeight.normal
   );
   static const textTheme16=TextStyle(

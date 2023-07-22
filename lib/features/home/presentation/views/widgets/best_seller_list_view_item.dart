@@ -11,10 +11,12 @@ class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({
     super.key,
     required this.width,
+    required this.height,
     required this.items,
   });
 
   final double width;
+  final double height;
   final Items items;
 
   @override
@@ -43,16 +45,18 @@ class BestSellerListViewItem extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  SizedBox(height: height*0.01,),
                   Text(
                     items.volumeInfo!.authors![0],
                     style:
-                        Style.textTheme14.copyWith(fontWeight: FontWeight.w500),
+                        Style.textTheme12.copyWith(fontWeight: FontWeight.w500),
                   ),
+                  SizedBox(height: height*0.01,),
                   Row(
                     children: [
                       Text(
                         'Free',
-                        style: Style.textTheme20.copyWith(
+                        style: Style.textTheme16.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),

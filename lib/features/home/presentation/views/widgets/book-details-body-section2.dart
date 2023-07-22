@@ -22,7 +22,7 @@ class BookDetailsBodySection2 extends StatelessWidget {
         children: [
           Text(
             'You can also like',
-            style: Style.textTheme14.copyWith(fontWeight: FontWeight.w600),
+            style: Style.textTheme16.copyWith(fontWeight: FontWeight.w600),
           ),
           SizedBox(
             height: height * 0.02,

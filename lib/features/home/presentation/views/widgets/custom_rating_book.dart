@@ -9,8 +9,8 @@ class CustomRatingBook extends StatelessWidget {
   });
 
   final double width;
-  final int rate;
-  final int count;
+  final num rate;
+  final num count;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CustomRatingBook extends StatelessWidget {
         SizedBox(width: width*0.03,),
         Text(
           '($count)',
-          style: Style.textTheme14.copyWith(
+          style: Style.textTheme12.copyWith(
               fontWeight: FontWeight.w400,
               color: const Color(0xff707070)
           ),

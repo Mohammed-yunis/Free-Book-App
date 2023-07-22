@@ -19,7 +19,7 @@ class CustomSearchListView extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     itemBuilder: (context, index) =>  Padding(
                         padding:  EdgeInsets.symmetric(vertical: height*0.01),
-                        child:  BestSellerListViewItem(width: width,items:state.items[index] ,)
+                        child:  BestSellerListViewItem(width: width,items:state.items[index] ,height: height,)
                     ),
                     itemCount: state.items.length,
                     shrinkWrap: true,

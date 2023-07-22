@@ -1,4 +1,5 @@
 import 'package:bookly_app/features/home/presentation/manager/best_seller_book_cubit/fetch_best_seller_cubit.dart';
+import 'package:bookly_app/features/home/presentation/manager/choice_books_cubit/choice_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/featured_book_cubit/fetch_featured_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,6 +31,7 @@ class BookApp extends StatelessWidget {
             return FetchFeaturedCubit(getIt.get<HomeRepoImplement>())..fetchFeaturedBook();
           },
         ),
+        BlocProvider(create: (context) => ChoiceBooksCubit(),)
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
