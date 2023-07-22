@@ -10,10 +10,12 @@ import 'package:dio/dio.dart';
 import 'home-repo.dart';
 
 class HomeRepoImplement implements HomeRepo{
+  final ApiServices apiServices;
+  HomeRepoImplement(this.apiServices);
   @override
   Future<Either<Failure, List<Items>>> fetchBestSellerBooks() async {
    try {
-     var data =  await ApiServices.get(endPoint: 'volumes?Filtering=free-ebooks&Sorting=bestseller&q=subject:programming');
+     var data =  await apiServices.get(endPoint: 'volumes?Sorting=bestseller&q=computer science');
      BookModel bookModel=BookModel.fromJson(data);
      return Right(bookModel.items!);
    } catch (e) {
@@ -29,7 +31,22 @@ class HomeRepoImplement implements HomeRepo{
   @override
   Future<Either<Failure, List<Items>>> fetchFeaturedBooks() async {
     try {
-      var data =  await ApiServices.get(endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
+      var data =  await apiServices.get(endPoint: 'volumes?q=programming');
+      BookModel bookModel=BookModel.fromJson(data);
+      return Right(bookModel.items!);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Items>>> fetchSimilarBooks({required String category}) async {
+    try {
+      var data =  await apiServices.get(endPoint: 'volumes?Sorting=relevance&q=programming');
       BookModel bookModel=BookModel.fromJson(data);
       return Right(bookModel.items!);
     } catch (e) {

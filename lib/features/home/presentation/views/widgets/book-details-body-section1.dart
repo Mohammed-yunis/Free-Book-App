@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/Items.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_appbar_details_book.dart';
@@ -9,11 +10,12 @@ class BookDetailsBodySection1 extends StatelessWidget {
   const BookDetailsBodySection1({
     super.key,
     required this.height,
-    required this.width,
+    required this.width, required this.items,
   });
 
   final double height;
   final double width;
+  final Items items;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +24,15 @@ class BookDetailsBodySection1 extends StatelessWidget {
         CustomAppBarBookDetails(height: height, width: width),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.27),
-          child:  CustomListViewItem(aspectRatio: 4 / 5.9,onTap: (){}),
+          child:  CustomListViewItem(aspectRatio: 4 / 5.9,onTap: (){},items: items,),
         ),
         SizedBox(
           height: height*0.04,
         ),
-        const Text(
-          'The Jungle Book',
+         Text(
+          items.volumeInfo!.title!,
           style: Style.textTheme30,
+           textAlign: TextAlign.center,
         ),
         SizedBox(
           height: height * 0.01,
@@ -37,7 +40,7 @@ class BookDetailsBodySection1 extends StatelessWidget {
         Opacity(
             opacity: 0.6,
             child: Text(
-              'Rudyard Kipling',
+              items.volumeInfo!.authors![0],
               style: Style.textTheme18.copyWith(
                 fontWeight: FontWeight.w500,
               ),
@@ -45,7 +48,7 @@ class BookDetailsBodySection1 extends StatelessWidget {
         SizedBox(
           height: height * 0.022,
         ),
-        CustomRatingBook(width: width),
+        CustomRatingBook(width: width,rate: items.volumeInfo?.averageRating??0,count: items.volumeInfo?.ratingsCount??0),
       ],
     );
   }

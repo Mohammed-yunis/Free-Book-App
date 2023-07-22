@@ -1,72 +1,67 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import '../../../data/models/Items.dart';
 import 'custom_rating_book.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({
     super.key,
     required this.width,
+    required this.items,
   });
 
   final double width;
+  final Items items;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookDetailsView,extra: items);
       },
       child: Row(
         children: [
           SizedBox(
             height: 130,
-            child: AspectRatio(
-              aspectRatio: 2.5/3.6,
-              child: Container(
-                decoration:   BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  color: Colors.red,
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(AssetService.testImage),
-                  ),
-                ),
-              ),
-            ),
+            child: CustomListViewItem(
+                aspectRatio: 2.5 / 3.6,
+                items: items),
           ),
           Expanded(
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: width*0.07),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.07),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Harry Potter and the Goblet of Fire',
-                    style: Style.textTheme20.copyWith(
-                        fontFamily: kSpectraFine
-                    ),
+                    items.volumeInfo!.title.toString(),
+                    style: Style.textTheme20.copyWith(fontFamily: kSpectraFine),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    'J.K Rowling',
-                    style: Style.textTheme14.copyWith(fontWeight: FontWeight.w500),
+                    items.volumeInfo!.authors![0],
+                    style:
+                        Style.textTheme14.copyWith(fontWeight: FontWeight.w500),
                   ),
                   Row(
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Style.textTheme20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const Spacer(),
-                      CustomRatingBook(width: width),
+                      CustomRatingBook(
+                        width: width,
+                        rate: items.volumeInfo!.averageRating??0,
+                        count: items.volumeInfo!.ratingsCount??0,
+                      ),
                     ],
                   ),
                 ],
@@ -78,4 +73,3 @@ class BestSellerListViewItem extends StatelessWidget {
     );
   }
 }
-

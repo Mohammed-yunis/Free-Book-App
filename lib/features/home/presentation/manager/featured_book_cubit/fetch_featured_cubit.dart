@@ -5,7 +5,7 @@ import 'fetch_featured_state.dart';
 class FetchFeaturedCubit extends Cubit<FetchFeaturedStates>{
   FetchFeaturedCubit(this.homeRepo):super(FetchFeaturedInitial());
   final HomeRepo homeRepo;
-  Future<void> fetchBestSellerBook() async {
+  Future<void> fetchFeaturedBook() async {
     emit(FetchFeaturedLoading());
     var result = await homeRepo.fetchFeaturedBooks();
     result.fold((failure) {

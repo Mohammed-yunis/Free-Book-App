@@ -1,16 +1,19 @@
+import 'package:bookly_app/core/utils/functions_used/url_launcher.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/models/Items.dart';
 import 'custom_text_buttom.dart';
 
 class BookDetailsActionButton extends StatelessWidget {
   const BookDetailsActionButton({
     super.key,
     required this.width,
-    required this.height,
+    required this.height, required this.items,
   });
 
   final double width;
   final double height;
+  final Items items;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class BookDetailsActionButton extends StatelessWidget {
           Expanded(
             child: CustomTextButton(
               height: height * 0.055,
-              text: '19.99€',
+              text: 'Free',
               backGroundColor: Colors.white,
               textColor: Colors.black,
               borderRadius: const BorderRadius.only(
@@ -32,6 +35,9 @@ class BookDetailsActionButton extends StatelessWidget {
           ),
           Expanded(
             child: CustomTextButton(
+              onPress: (){
+                launchToUrl(context,items.volumeInfo!.previewLink);
+              },
               height: height * 0.055,
               text: 'Free preview',
               backGroundColor: const Color(0xffEF8262),

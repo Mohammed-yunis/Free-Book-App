@@ -15,7 +15,7 @@ class CustomAppBarBookDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(top: height/20,bottom:height/70,right:width/15 ),
+      padding:  EdgeInsets.only(top: height/20,bottom:height/70,right:width/15 ,left:width/15, ),
       child: Row(
         children: [
           IconButton(

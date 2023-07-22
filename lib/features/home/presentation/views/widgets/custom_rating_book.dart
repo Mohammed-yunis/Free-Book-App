@@ -5,10 +5,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomRatingBook extends StatelessWidget {
   const CustomRatingBook({
     super.key,
-    required this.width,
+    required this.width, required this.rate, required this.count,
   });
 
   final double width;
+  final int rate;
+  final int count;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +20,16 @@ class CustomRatingBook extends StatelessWidget {
         Icon(
           FontAwesomeIcons.solidStar,
           color: const Color(0xffFFDD4F),
-          size: width*0.04,
+          size: width*0.038,
         ),
         SizedBox(width: width*0.03,),
         Text(
-          '4.8',
+          rate.toString(),
           style: Style.textTheme16.copyWith(fontWeight: FontWeight.w500),
         ),
         SizedBox(width: width*0.03,),
         Text(
-          '(2390)',
+          '($count)',
           style: Style.textTheme14.copyWith(
               fontWeight: FontWeight.w400,
               color: const Color(0xff707070)

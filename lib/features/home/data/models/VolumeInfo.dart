@@ -29,7 +29,7 @@ class VolumeInfo {
 
   VolumeInfo.fromJson(dynamic json) {
     title = json['title'];
-    authors = json['authors'] != null ? json['authors'].cast<String>() : [];
+    authors = json['authors'] != null ? json['authors'].cast<String>() : ['No author'];
     publisher = json['publisher'];
     publishedDate = json['publishedDate'];
     description = json['description'];
@@ -42,7 +42,7 @@ class VolumeInfo {
     readingModes = json['readingModes'] != null ? ReadingModes.fromJson(json['readingModes']) : null;
     pageCount = json['pageCount'];
     printType = json['printType'];
-    categories = json['categories'] != null ? json['categories'].cast<String>() : [];
+    categories = json['categories'] != null ? json['categories'].cast<String>() : ['all'];
     averageRating = json['averageRating'];
     ratingsCount = json['ratingsCount'];
     maturityRating = json['maturityRating'];
